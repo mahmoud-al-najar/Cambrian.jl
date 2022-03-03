@@ -1,3 +1,5 @@
+export tournament_selection, max_selection, random_selection
+
 "return a winner individual from a tournament of size t_size from a population"
 function tournament_selection(pop::Array{<:Individual}, t_size::Int)
     inds = shuffle!(collect(1:length(pop)))
