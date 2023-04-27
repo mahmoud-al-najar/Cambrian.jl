@@ -32,7 +32,7 @@ function log_gen(e::AbstractEvolution)
         maxs = map(i->i.fitness[d], e.population)
         with_logger(e.logger) do
             @info Formatting.format("{1:04d},{2:e},{3:e},{4:e}",
-                                    e.gen, maximum(maxs), mean(maxs), std(maxs))
+                    e.gen, maximum(maxs), mean(maxs), std(maxs))
         end
     end
     flush(e.logger.stream)
@@ -40,7 +40,7 @@ end
 
 "save the population in gens/"
 function save_gen(e::AbstractEvolution)
-    path = joinpath("gens", String(e.config.id))
+    path = joinpath(String(e.config.output_dir), "gens", String(e.config.id))
     path = joinpath(path, Formatting.format("{1:04d}", e.gen))
     mkpath(path)
     sort!(e.population)

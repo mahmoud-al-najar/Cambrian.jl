@@ -20,8 +20,16 @@ function get_child(parent::Individual, genes::AbstractArray)
     typeof(parent)(genes, -Inf * ones(length(parent.fitness)))
 end
 
+# function isless(i1::Individual, i2::Individual)
+#     all(i1.fitness .< i2.fitness)
+# end
+
+# function isless(i1::Individual, i2::Individual)
+#     sum(i1.fitness .< i2.fitness) > sum(i1.fitness .> i2.fitness)
+# end
+
 function isless(i1::Individual, i2::Individual)
-    all(i1.fitness .< i2.fitness)
+    mean(i1.fitness) < mean(i2.fitness)
 end
 
 function ind_parse(st::String)
